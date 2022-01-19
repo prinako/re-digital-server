@@ -1,0 +1,129 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: "Poppins", sans-serif;
+}
+
+.signup-home{
+    width: 390px;
+    margin: 3rem auto;
+    border-radius: 1rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.signup-sec{
+    width: 100%;
+    height: fit-content;
+    border: solid 0.1rem #A2DBFA;
+    padding: 20px;
+    border-radius: 0 0 1rem 1rem;
+}
+.signup-header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    border-radius: 5px 5px 0 0;
+    width: 100%;
+    height: 90px; 
+}
+#search-inHeader{
+    display: none;
+}
+
+.signup-header div{
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+    color: #fff;
+}
+.input-sec{
+    text-align: left;
+    color: black;
+}
+.input-sec input{
+    transition: all 0.3s ease;
+}
+.boxes{
+    border-radius: 0.3125rem;
+    padding: 7px;
+    width: 95%;
+    margin-bottom: 20px;
+    outline: none;
+    border: 0.1rem solid #A2DBFA;
+}
+.terms{
+    width: 100%;
+    text-align: center;
+}
+.terms i{
+    font-size: 0.8rem;
+}
+.terms i a{
+    text-decoration: none;
+    color: #39A2DB;
+}
+.terms i a:hover{
+    text-decoration: underline;
+}
+
+.signup-button{
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+    padding: .5rem;
+}
+.signup-button button{
+    padding: .8rem;
+    font-size: 1.2rem;
+    background: #2C2E43;
+    color: #fff;
+    border: none;
+    border-radius: 0.3125rem;
+    cursor: pointer;
+}
+.signup-button button:hover{
+    background: #345B63;
+}
+.fg-buts{
+    display:flex;
+    justify-content: space-evenly;
+    width: 100%;
+    margin-top: 30px;
+}
+.fg-buts button{
+    display: flex;
+    justify-content: space-between;
+    justify-content: center;
+    width: 5rem;
+    height: 1.9rem;
+    border: none;
+    align-items: center;
+    border-radius: 0.3125rem;
+    color: #fff;
+    cursor: pointer;
+}
+.fg-buts button:hover{
+    background:#152D35;
+}
+
+
+
+.login{
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+.login p{
+    font-size: 1rem;
+}
+.login p a{
+    text-decoration: none;
+    color: #39A2DB;
+}
+.login p a:hover{
+    text-decoration: underline;
+}
+

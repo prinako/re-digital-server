@@ -1,0 +1,38 @@
+<section id="title">
+  <nav class="navbar color-navbar">
+    <% if(userId !==null ) { %>
+    <!-- menu -->
+    <div class="menu">
+      <!-- hamburger menu icon -->
+      <div class="hamburger" id="hamburger-menu">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+      <!-- close menu icon-->
+      <div class="close-icon" id="close-menu-icon">
+        <i class="fas fa-times"></i>
+      </div>
+    </div>
+    <% } %>
+    <!-- site name -->
+    <a class="nav-brand" href="/">RU DIGITAL</a>
+    
+  
+    <% if(userId === null ) { %>
+    <!-- nav login button -->
+    <div class="login-container">
+
+      <a class="nav-login" href="/">login</a>
+      <!-- nav sign up button -->
+      <a class="nav-signup" href="/signup">Criar Conta</a>
+    </div>
+    <% } if(userId !==null ) { %>
+    <!-- profile -->
+    <div style="display: flex;">
+      <span style="padding-right: 1rem; font-size:1.2rem;"><%= userId.username %></span>
+      <a href="/logout">Sair</a>
+    </div>
+    <% } %>
+  </nav>
+</section>

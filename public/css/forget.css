@@ -1,0 +1,19 @@
+.row-input{
+    width: 50%;
+    height: 2rem;
+    margin-bottom: 3rem;
+    padding: 0 0.5rem;
+    border-radius: 5px;
+    border: 0.1rem #39A2DB solid;
+    outline: none;
+}
+.wrapper form{
+    text-align: center;
+}
+.signup-link{
+    text-align: center;
+    margin: 3rem;
+}
+.fp-dir{
+    margin: 3rem 0;
+}

@@ -1,0 +1,171 @@
+/* colors variable */
+:root {
+  --primary-color: #39A2DB;
+  --secondary-color: #A2DBFA;
+  --color-btn: #053742;
+}
+
+label {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 0;
+
+}
+
+.d-flex {
+  display: flex
+}
+
+.shopping-cart {
+  margin-left: auto;
+}
+
+.prof-pg {
+  background-color: #fff;
+  margin: 2rem 0;
+  padding-bottom: 2rem;
+  overflow: hidden;
+}
+
+.prof-hd {
+  padding: 2rem;
+  color: #fff;
+}
+
+.prof {
+  display: grid;
+  margin-top: 2rem;
+}
+
+.img-wrapper {
+  display: grid;
+  margin: 0 auto 2.5rem auto;
+}
+
+.prof-img-container {
+  border: 2px solid white;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+  margin: 1.5rem auto;
+  width: 8rem;
+  height: 8rem;
+  overflow: hidden;
+}
+
+.prof-img {
+  width: 100%;
+  height: auto;
+}
+
+.user-ID {
+  padding: 0 0.5rem;
+}
+
+.prof-form {
+  padding: 0.5rem;
+  /* text-align: left; */
+}
+
+.prof-input {
+  padding: 1rem 1rem;
+  width: 100%;
+
+}
+
+.box {
+  margin-right: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.box[disabled] {
+  border: none;
+  color: #000;
+  background-color: #fff;
+  width: 100%;
+  font-weight: 300;
+  margin-bottom: 0;
+}
+
+.lay-grid {
+  display: grid;
+  grid-template-columns: 1fr 3.5fr;
+  grid-gap: 0.235rem;
+  align-items: center;
+}
+
+
+.edit-btn {
+  cursor: pointer;
+  display: inline-block;
+  font-size: 19px;
+  text-align: center;
+  margin: auto;
+}
+
+.edit-btn:hover {
+  color: var(--primary-color);
+}
+
+.disabled-edit-btn{
+  color: #ced4da;
+  cursor: default;
+  pointer-events: none;
+}
+.disabled-edit-btn:hover{
+  color: #ced4da;
+  border-color: #ced4da;
+  background-color:#fff;
+}
+.save-btn {
+  text-align: center;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 2rem;
+}
+
+
+.prof-fp {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.prof-fp a,
+.save-btn button {
+  color: var(--primary-color);
+}
+
+.prof-fp a:hover {
+  text-decoration: underline;
+}
+
+@media screen and (min-width:500px) {
+  .prof-pg {
+    border-radius: 0.5rem;
+    margin: 4rem calc(20% - 5rem);
+  }
+
+  .prof-input {
+    margin: 2rem 0;
+    padding: 0 calc(1% + 2rem);
+  }
+}
+
+@media screen and (min-width:700px) {
+  .prof-pg {
+    margin: 4rem calc(20% - 5rem);
+  }
+
+  .prof-input {
+    padding: 0 calc(5% + 2rem);
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .prof-pg {
+    margin: 4rem calc(30% - 5rem);
+  }
+
+  .prof-input {
+    padding: 0 calc(10% + 2rem);
+  }
+}

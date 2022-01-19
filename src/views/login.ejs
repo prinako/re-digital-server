@@ -1,0 +1,26 @@
+<%-include("./partials/header")-%> 
+<link rel="stylesheet" href="css/login.css">
+<div class="main-container">
+    <div class="container">
+        <div class="title1 color-navbar"><span>LOGIN</span></div>
+        <div class="wrapper">
+            <form action="/login" method="POST">
+                <div class="row">
+                    <i class="fas fa-user"></i>
+                    <input type="text/email" name="email" placeholder="Email ou Nome de Usarío" required>
+                </div>
+                <div class="row">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" name="password" placeholder="Senha" required autocomplete="off">
+                </div>
+                <div class="forgot-pass"><a href="forgot.html">Esqueceu a senha? </a></div>
+                <div class="row button">
+                    <input type="submit" value="Login">
+                </div>
+            </form>
+        </div>
+        <div class="signup-link"><p>Não é Usarío?</p> <a href="signup"> Criar Conta</a></div>
+    </div>
+    
+</div>
+<%-include("./partials/footer")-%> 

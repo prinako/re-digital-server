@@ -1,0 +1,228 @@
+.main-container {
+  width: 100%;
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+  justify-content: space-around;
+  height: 86.7vh;
+  align-items: center;
+}
+
+.container {
+  width: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.473), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 0.3125rem;
+}
+
+@media screen and (min-width: 845px) {
+  .container {
+    width: 70%;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .container {
+    width: 60%;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .container {
+    width: 35%;
+  }
+}
+.wrapper {
+  width: 100%;
+  border: none;
+  border: 0.1rem solid #ebe645;
+}
+
+.title1 {
+  display: flex;
+  height: 5.625rem;
+  width: 100%;
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: #000;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.3125rem 0.3125rem 0 0;
+}
+
+.wrapper form {
+  padding: 1.7rem 1.55rem 1.55rem 1.55rem;
+}
+
+.row {
+  height: 3.8125rem;
+  margin-bottom: 0.9rem;
+  position: relative;
+  border: none;
+}
+
+.row input {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  padding-left: 3.3rem;
+  font-size: 1rem;
+  border-radius: 0.3125rem;
+  border: 0.1rem solid #2c2e43;
+  transition: all 0.3s ease;
+}
+
+.row input:focus {
+  border-color: 0.1rem #2c2e43;
+  box-shadow: inset 0px 0px 2px 2px rgba(50, 205, 50, 0.199);
+}
+
+form .row i {
+  position: absolute;
+  width: 2.9375rem;
+  height: 100%;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #2c2e43;
+  border-radius: 0.3125rem 0 0 0.3125rem;
+  color: #fff;
+}
+
+.forgot-pass {
+  margin: 1.5rem 0;
+}
+
+.forgot-pass a {
+  text-decoration: none;
+  font-size: 1.5rem;
+  color: #000;
+}
+
+.forgot-pass a:hover {
+  text-decoration: underline;
+}
+
+.button input {
+  font-size: 1.5rem;
+  font-weight: 400;
+  padding-left: 0rem;
+  border: none;
+  border-radius: 0.32rem;
+  cursor: pointer;
+  background: #ffcc1d;
+  color: #000;
+}
+
+.button input:hover {
+  background: #ebe645;
+}
+
+.signup-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.1rem;
+  text-align: center;
+  background: #2c2e43;
+  border-radius: 0 0 0.3125rem 0.3125rem;
+  width: 100%;
+  height: 4rem;
+  padding-top: 3px;
+}
+
+.signup-link p {
+  color: #fff;
+}
+
+.signup-link a {
+  text-decoration: none;
+  color: #fff;
+  padding-left: 0.5rem;
+}
+
+.signup-link a:hover {
+  text-decoration: underline;
+}
+
+.container-image {
+  width: 70%;
+  height: 100%;
+}
+
+.col {
+  width: 100%;
+  height: 100%;
+  padding: 0.5rem 0;
+}
+
+.col img {
+  width: 100%;
+  height: inherit;
+}
+
+/*login with facebook or google*/
+.fg {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  list-style: none;
+}
+
+.fg li button {
+  width: 5.5rem;
+  height: 2rem;
+  border: none;
+  border-radius: 0.3125rem;
+  cursor: pointer;
+}
+
+.facebook button {
+  border: 0.1rem solid #4267b2;
+  background: #4267b2;
+}
+
+.google button {
+  background: #db4437;
+  border: solid 0.1rem #db4437;
+}
+
+.fg li button:hover {
+  background: #fff;
+}
+
+.fg li button i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  color: #fff;
+  width: 100%;
+  height: 100%;
+}
+
+.google button i:hover {
+  color: #db4437;
+}
+
+.facebook button i:hover {
+  color: #4267b2;
+}
+
+@media only screen and (max-width: 700px) {
+  .container {
+    max-width: 100%;
+    position: absolute;
+    z-index: 1;
+  }
+
+  .wrapper {
+    background: rgba(58, 58, 57, 0.781);
+  }
+
+  .container-image {
+    width: 100%;
+    position: relative;
+    z-index: 0;
+  }
+}
