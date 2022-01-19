@@ -59,7 +59,6 @@ app.use(
 app.use(passport.initialize());
 
 const userRouter = require("./routes/user");
-const usarioAdmin = require("./routes/admin");
 
 app.use("/", userRouter);
 

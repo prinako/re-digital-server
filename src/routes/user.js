@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const passport = require("passport");
-const ensureLogin = require("connect-ensure-login").ensureLoggedIn;
 
 const {
   findUser,
@@ -17,7 +16,6 @@ const {
 
 router.use(express.static("public"));
 router.use(express.static("usersProfileImage"));
-const ensureLoggedIn = ensureLogin();
 
 //RENDING LOG IN PAGE
 router.route("/").get((req, res) => {
@@ -31,14 +29,14 @@ router.get("/admin",checkNotAuthenticated, (req, res) => {
 
 router
   .route("/sell-now")
-  .get(ensureLoggedIn, (req, res) => {
+  .get( (req, res) => {
     res.render("seller", {
       userId: req.session.passport.user,
       title: "Sell Now",
     });
   })
 
-  .post(ensureLoggedIn, async (req, res) => {
+  .post( async (req, res) => {
     postProduct(req, (doc) => {
       res.redirect("sell-now");
     });
