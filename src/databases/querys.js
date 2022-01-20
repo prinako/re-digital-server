@@ -110,7 +110,6 @@ async function updateProfile(req, next) {
 }
 
 async function postCadapio(req, next) {
-  console.log(req.body);
   const id = req.session.passport.user.id;
 
   const findUserIfexist = await findUserByIde(id);

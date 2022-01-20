@@ -26,7 +26,6 @@ router.route("/").get((req, res) => {
 router
   .route("/admin")
   .get(checkNotAuthenticated, (req, res) => {
-    console.log(req);
     res.render("admin", { userId: req.session.passport.user, title: "Admin" });
   })
   .post(
@@ -42,7 +41,6 @@ router
           title: "Admin",
           userId: req.session.passport.user,
         });
-        console.log(err);
       }
     }
   );
@@ -61,7 +59,6 @@ router
 router
   .route("/login")
   .get(checkAuthenticated, (req, res) => {
-    console.log(req._passport);
     res.render("login", { userId: null, title: "Login" });
   })
   //LOGING IN
