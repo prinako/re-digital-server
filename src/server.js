@@ -59,10 +59,8 @@ app.use(
 app.use(passport.initialize());
 
 const userRouter = require("./routes/user");
-const dataRouter = require("./routes/getData");
 
 app.use("/", userRouter);
-app.use("/data", dataRouter)
 
 app.listen(port, () => {
   console.log(`server started on port ${port}`);
