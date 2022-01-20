@@ -5,6 +5,7 @@ const passport = require("passport");
 const {
   findUser,
   criaNovoUsario,
+  postCadapio,
   updateProfile,
   findAllCadapios,
 } = require("../databases/querys");
@@ -22,30 +23,45 @@ router.route("/").get((req, res) => {
   res.redirect("login");
 });
 
-router.get("/admin",checkNotAuthenticated, (req, res) => {
-  console.log(req);
-  res.render("admin", { userId: req.session.passport.user, title: "Sell Now" });
-});
-
 router
-  .route("/sell-now")
-  .get( (req, res) => {
-    res.render("seller", {
-      userId: req.session.passport.user,
-      title: "Sell Now",
-    });
+  .route("/admin")
+  .get(checkNotAuthenticated, (req, res) => {
+    console.log(req);
+    res.render("admin", { userId: req.session.passport.user, title: "Admin" });
   })
+  .post(
+    checkNotAuthenticated,
+    async (req, res) => {
+      try {
+       await postCadapio(req,() => {
+          res.redirect("/api");
+        });
+      } catch (err) {
+        res.render("admin", {
+          inform: err,
+          title: "Admin",
+          userId: req.session.passport.user,
+        });
+        console.log(err);
+      }
+    }
+  );
 
-  .post( async (req, res) => {
-    postProduct(req, (doc) => {
-      res.redirect("sell-now");
-    });
+  router.get("/api", async (req, res) => {
+    const resolut = await findAllCadapios((doc)=>doc);
+  
+    //await findAllProducts((products) => {
+    //  for (let i = 0; i < datas.length; i++) {
+    //console.log(resolut);
+    //  }
+    //});
+    res.json(resolut);
   });
 
 router
   .route("/login")
-  .get(checkAuthenticated,(req, res) => {
-    console.log(req._passport)
+  .get(checkAuthenticated, (req, res) => {
+    console.log(req._passport);
     res.render("login", { userId: null, title: "Login" });
   })
   //LOGING IN
@@ -60,7 +76,7 @@ router
 //RENDING REGISTER PAGE
 router
   .route("/signup")
-  .get(checkAuthenticated,(req, res) => {
+  .get(checkAuthenticated, (req, res) => {
     res.render("register", { title: "Sign Up" });
   })
   //REGISTER FOR AN ACCOUNT
@@ -85,7 +101,7 @@ router
     }
   });
 
-router.get("/logout",checkNotAuthenticated, (req, res) => {
+router.get("/logout", checkNotAuthenticated, (req, res) => {
   req.session.destroy(() => {
     res.redirect("/login");
   });

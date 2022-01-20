@@ -1,4 +1,11 @@
 <%-include("./partials/header")-%> 
+<% try { %>
+
+    <% if (messages.error) { %>
+    <div class="infor"><p><%= messages.error %></p> </div>
+    <% } %>
+    <% }catch (e) {} %>
+    
 <link rel="stylesheet" href="css/login.css">
 <div class="main-container">
     <div class="container">

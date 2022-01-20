@@ -28,35 +28,68 @@ const usersSchema = new Schema(
 
 const cadapioSchema = new Schema(
   {
-    title: {
+    data: {
       type: String,
       require: true,
+      unique: true,
     },
-    description: {
-      type: String,
-      require: true,
+    amoco: {
+      refeicao: {
+        type: String,
+        require: true,
+      },
+      nomeDaRefei: {
+        type: String,
+        require: true,
+      },
+      ingredintes: {
+        amo1: {
+          type: String,
+          require: true,
+        },
+        amo2: {
+          type: String,
+        },
+        amo3: {
+          type: String,
+        },
+        amo4: {
+          type: String,
+        },
+        amo5: {
+          type: String,
+        },
+      },
     },
-    category: {
-      type: String,
-      require: true,
+    jantar: {
+      refeicao: {
+        type: String,
+        require: true,
+      },
+      nomeDaRefei: {
+        type: String,
+        require: true,
+      },
+      ingredintes: {
+        jan1: {
+          type: String,
+          require: true,
+        },
+        jan2: {
+          type: String,
+        },
+        jan3: {
+          type: String,
+        },
+        jan4: {
+          type: String,
+        },
+        jan5: {
+          type: String,
+        },
+      },
     },
-    brand: {
-      type: String,
-    },
-    platform: {
-      type: String,
-    },
-    condition: {
-      type: String,
-    },
-    house: {
-      type: String,
-    },
-    price: {
-      type: String,
-    },
-    
-    seller: {
+    admin: {
       type: Schema.Types.ObjectId,
       ref: "user",
     },
@@ -67,7 +100,7 @@ const cadapioSchema = new Schema(
 );
 
 const User = mongoose.model("user", usersSchema);
-const Cadapio = mongoose.model("product", cadapioSchema);
+const Cadapio = mongoose.model("cadapio", cadapioSchema);
 
 module.exports = {
   User,

@@ -33,7 +33,6 @@ async function criaNovoUsario(reqBody) {
   const codigoServidor = process.env.CODIGO;
 
   const adminCodigo = codigoServidor === admin;
-  console.log(adminCodigo);
 
   if (!adminCodigo) {
     return reject("O codigo da admin incorreto");
@@ -111,52 +110,76 @@ async function updateProfile(req, next) {
 }
 
 async function postCadapio(req, next) {
-  const id = req.user._id;
+  console.log(req.body);
+  const id = req.session.passport.user.id;
 
   const findUserIfexist = await findUserByIde(id);
-
+  const cadapJa =req.body.data;
+  const cadapioJaexiste = await Cadapio.findOne({data:cadapJa});
   if (!findUserIfexist) {
     return console.log("user not find");
   }
+  if (cadapioJaexiste) {
+    return reject("Verifique a Data do Cadapio já existe ");
+  }
 
   const {
-    title,
-    description,
-    category,
-    brand,
-    platform,
-    condition,
-    house,
-    price,
+    data,
+    refeicao1,
+    nomeDaRefeiAmo,
+    amo1,
+    amo2,
+    amo3,
+    amo4,
+    amo5,
+    refeicao2,
+    nomeDaRefeiJan,
+    jan1,
+    jan2,
+    jan3,
+    jan4,
+    jan5,
   } = req.body;
 
   const novoCadapio = new Cadapio({
-    title: title,
-    description: description,
-    category: category,
-    brand: brand,
-    platform: platform,
-    condition: condition,
-    house: house,
-    price: price,
-    seller: id,
+    data: data,
+    amoco: {
+      refeicao: refeicao1,
+      nomeDaRefei: nomeDaRefeiAmo,
+      ingredintes: {
+        amo1: amo1,
+        amo2: amo2,
+        amo3: amo3,
+        amo4: amo4,
+        amo5: amo5,
+      },
+    },
+    jantar: {
+      refeicao: refeicao2,
+      nomeDaRefei: nomeDaRefeiJan,
+      ingredintes: {
+        jan1: jan1,
+        jan2: jan2,
+        jan3: jan3,
+        jan4: jan4,
+        jan5: jan5,
+      },
+    },
+    admin: id,
   });
 
   await novoCadapio.save((err, doc) => {
     if (err) {
-      return console.log(err);
+      console.log(err)
+      return err;
     }
     return next(doc);
   });
 }
 
 async function findAllCadapios(next) {
-  await Cadapio.find((err, doc) => {
-    if (err) {
-      return next(err);
-    }
-    return next(doc);
-  });
+  const rs = await Cadapio.find((e,d)=>d).clone();
+  return next(rs);
 }
 
 async function findCadapioByIde(_id, next) {

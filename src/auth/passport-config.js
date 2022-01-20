@@ -8,14 +8,14 @@ function initPassport(passport) {
         const user = verifyUser;
         if (user == null) {
             return done(null, false, {
-                message: 'no user found on this email or user name'
+                message: 'nenhum usuário encontrado neste e-mail ou nome de usuário'
             });
         }
         try {
             if (await bcrypt.compare(password, user.password)) {
                 return done(null, user)
             } else {
-                return done(null, false, { message: 'password incrrect' });
+                return done(null, false, { message: 'senha incorreta' });
             }
         } catch (e) {
             return done(e)
@@ -34,13 +34,9 @@ function initPassport(passport) {
     });
 
     passport.deserializeUser(async (user, done) => {
-        try {
             process.nextTick(function() {
                 return done(null, user);
-              });
-        } catch (err) {
-            done(err)
-        }
+            })
     });
 }
 
