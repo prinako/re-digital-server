@@ -46,7 +46,7 @@ router
   );
 
   router.get("/api", async (req, res) => {
-    const resolut = JSON.stringify(await findAllCadapios((doc)=>doc));
+    const resolut = await findAllCadapios((doc)=>doc);
   
     //await findAllProducts((products) => {
     //  for (let i = 0; i < datas.length; i++) {
