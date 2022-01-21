@@ -46,7 +46,7 @@ router
   );
 
   router.get("/api", async (req, res) => {
-    const resolut = await findAllCadapios((doc)=>doc);
+    const resolut = JSON.stringify(await findAllCadapios((doc)=>doc));
   
     //await findAllProducts((products) => {
     //  for (let i = 0; i < datas.length; i++) {
@@ -61,7 +61,7 @@ router
   .get(checkAuthenticated, (req, res) => {
     res.render("login", { userId: null, title: "Login" });
   })
-  //LOGING IN
+  //LOG IN
   .post(
     passport.authenticate("local-login", {
       successRedirect: "/admin",
@@ -70,7 +70,7 @@ router
     })
   );
 
-//RENDING REGISTER PAGE
+//PADENA DE CARDASTRO
 router
   .route("/signup")
   .get(checkAuthenticated, (req, res) => {
