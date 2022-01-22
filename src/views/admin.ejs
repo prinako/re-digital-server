@@ -17,6 +17,7 @@
     action="/admin"
     method="post"
   >
+  <!-- AQUI FICAR A SELEÇÃO DA DATA -->
     <div class="wt-h mg-b product">
       <label class="form-label" for="data"><span>Data:</span></label>
       <input
@@ -28,12 +29,13 @@
         autocomplete="off"
       />
     </div>
+    <!-- AQUI FICAR A SELEÇAÕ DO REFEIÇAÕ (AMOÇO)-->
     <div class="mg-b">
       <div class="wt-h product">
         <label class="form-label" for="amoço">Refeição:</label>
         <select class="form-select" name="refeicao1" id="amoço" required>
-          <option value="amoço">Amoço</option>
-          <option value="janta">Jantar</option>
+          <option value="AMOÇO">Amoço</option>
+          <option value="JANTAR">Jantar</option>
         </select>
       </div>
     </div>
@@ -50,6 +52,7 @@
         autocomplete="off"
       />
     </div>
+    <!-- GUARNIÇÃO -->
     <h2 class="mg-t">Guarnição:</h2>
     <div class="wt-h mg-b product">
       <input
@@ -108,12 +111,13 @@
       style="height: 0.25rem; background-color: #000; margin: 1rem 0 1rem 0"
     />
 
+    <!-- AQUI FICAR A SELEÇAÕ DO REFEIÇAÕ (JANTAR)-->
     <div class="mg-b">
       <div class="wt-h product">
         <label class="form-label" for="category">Refeição:</label>
         <select class="form-select" name="refeicao2" id="category" required>
-          <option value="janta">Jantar</option>
-          <option value="amoço">Amoço</option>
+          <option value="janta">JANTAR</option>
+          <option value="amoço">AMOÇO</option>
         </select>
       </div>
     </div>
