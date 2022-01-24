@@ -98,7 +98,7 @@ async function postCadapio(req, next) {
         amo4: amo4,
         amo5: amo5,
       },
-      vegetariano: vegetariano1,
+      vegetariano1: vegetariano1,
     },
     jantar: {
       refeicao: refeicao2,
@@ -110,7 +110,7 @@ async function postCadapio(req, next) {
         jan4: jan4,
         jan5: jan5,
       },
-      vegetariano: vegetariano2,
+      vegetariano2: vegetariano2,
     },
     admin: id,
   });

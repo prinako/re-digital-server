@@ -109,7 +109,7 @@ const cadapioSchema = new Schema(
           type: String,
         },
       },
-      vegetariano: {
+      vegetariano1: {
         type: String,
       },
     },
@@ -140,7 +140,7 @@ const cadapioSchema = new Schema(
           type: String,
         },
       },
-      vegetariano: {
+      vegetariano2: {
         type: String,
       },
     },
