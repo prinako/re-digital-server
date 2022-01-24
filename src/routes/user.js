@@ -61,8 +61,8 @@ router
   });
 
 router.get("/api", async (req, res) => {
-  const resolut = await findAllCadapios((doc) => doc);
-  res.json(resolut);
+  const resolut = await todosOscardpio((doc) => doc);
+  res.send(JSON.stringify(resolut));
 });
 
 router
