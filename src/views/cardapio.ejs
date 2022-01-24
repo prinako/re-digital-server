@@ -1,0 +1,67 @@
+<link rel="stylesheet" href="css/index.css" />
+<%-include("./partials/header")-%>
+<div class="product-btn-links">
+    <a class="btn" href="/">Pagina Inicial</a>
+    <a class="btn" href="/admin">Adicione Novo Cardápio</a>
+  </div>
+<!-- product cards -->
+<section id="product-cards">
+  <div class="cards-container">
+    <% if(cardapios.length !== 0) {-%> <% cardapios.forEach((cardapio, i)=>{ -%>
+    <div class="cards-item">
+      <div class="reclame">
+        <h3>Cardapio de: <%=cardapio.data %></h3>
+      </div>
+      <div class="cards-details">
+        <div class="product-name">
+          <h3>Refeição:</h3>
+          <span class=""><%=cardapio.amoco.refeicao %></span>
+        </div>
+        <div class="product-name">
+          <h3>Prato:</h3>
+          <span class=""><%=cardapio.amoco.nomeDaRefei %></span>
+        </div>
+      </div>
+      <div class="product-description">
+        <h3>Guarnição:</h3>
+        <div>
+          <ul>
+            <li><%=cardapio.amoco.ingredintes.amo1%></li>
+            <li><%=cardapio.amoco.ingredintes.amo2%></li>
+            <li><%=cardapio.amoco.ingredintes.amo3%></li>
+            <li><%=cardapio.amoco.ingredintes.amo4%></li>
+            <li><%=cardapio.amoco.ingredintes.amo5%></li>
+          </ul>
+        </div>
+      </div>
+      <hr>
+      <div class="cards-details">
+        <div class="product-name">
+          <h3>Refeição:</h3>
+          <span class=""><%=cardapio.jantar.refeicao %></span>
+        </div>
+        <div class="product-name">
+          <h3>Prato:</h3>
+          <span class=""><%=cardapio.jantar.nomeDaRefei %></span>
+        </div>
+        <div class="product-description">
+          <h3>Guarnição:</h3>
+          <div>
+            <ul>
+              <li><%=cardapio.jantar.ingredintes.jan1%></li>
+              <li><%=cardapio.jantar.ingredintes.jan2%></li>
+              <li><%=cardapio.jantar.ingredintes.jan3%></li>
+              <li><%=cardapio.jantar.ingredintes.jan4%></li>
+              <li><%=cardapio.jantar.ingredintes.jan5%></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+      <% })}else{-%>
+      <h1>No product to display</h1>
+      <%}-%>
+    </div>
+  </div>
+</section>
+<%-include("./partials/footer")-%>

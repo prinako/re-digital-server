@@ -6,8 +6,10 @@ const {
   findUser,
   criaNovoUsario,
   postCadapio,
-  updateProfile,
-  findAllCadapios,
+  todosOsReclameAqui,
+  todosOscardpio,
+  crioFeedback,
+  crioReclamaAqui,
 } = require("../databases/querys");
 
 const {
@@ -19,8 +21,26 @@ router.use(express.static("public"));
 router.use(express.static("usersProfileImage"));
 
 //RENDING LOG IN PAGE
-router.route("/").get((req, res) => {
-  res.redirect("login");
+router.route("/").get(checkNotAuthenticated, async (req, res) => {
+  await todosOsReclameAqui((reclamaçoes)=>{
+    console.log(reclamaçoes)
+    res.render("index", {
+      title: "Ru Digital",
+      userId: req.session.passport.user,
+      reclames:reclamaçoes
+    });
+  })
+});
+
+router.route("/cardapio").get(checkNotAuthenticated, async (req, res) => {
+  await todosOscardpio((cardapio)=>{
+    console.log(cardapio[0].amoco.nomeDaRefei)
+    res.render("cardapio", {
+      title: "Ru Digital",
+      userId: req.session.passport.user,
+      cardapios:cardapio
+    });
+  })
 });
 
 router
@@ -28,33 +48,24 @@ router
   .get(checkNotAuthenticated, (req, res) => {
     res.render("admin", { userId: req.session.passport.user, title: "Admin" });
   })
-  .post(
-    checkNotAuthenticated,
-    async (req, res) => {
-      try {
-       await postCadapio(req,() => {
-          res.redirect("/api");
-        });
-      } catch (err) {
-        res.render("admin", {
-          inform: err,
-          title: "Admin",
-          userId: req.session.passport.user,
-        });
-      }
+  .post(checkNotAuthenticated, async (req, res) => {
+    try {
+      await postCadapio(req, () => {
+        res.redirect("/admin");
+      });
+    } catch (err) {
+      res.render("admin", {
+        inform: err,
+        title: "Admin",
+        userId: req.session.passport.user,
+      });
     }
-  );
-
-  router.get("/api", async (req, res) => {
-    const resolut = await findAllCadapios((doc)=>doc);
-  
-    //await findAllProducts((products) => {
-    //  for (let i = 0; i < datas.length; i++) {
-    //console.log(resolut);
-    //  }
-    //});
-    res.json(resolut);
   });
+
+router.get("/api", async (req, res) => {
+  const resolut = await findAllCadapios((doc) => doc);
+  res.json(resolut);
+});
 
 router
   .route("/login")
@@ -64,7 +75,7 @@ router
   //LOG IN
   .post(
     passport.authenticate("local-login", {
-      successRedirect: "/admin",
+      successRedirect: "/",
       failureRedirect: "login",
       failureFlash: true,
     })
@@ -76,7 +87,7 @@ router
   .get(checkAuthenticated, (req, res) => {
     res.render("register", { title: "Sign Up" });
   })
-  //REGISTER FOR AN ACCOUNT
+  //crir uma conta
   .post(async (req, res) => {
     const verifyUserExist = await findUser(req.body);
     if (verifyUserExist !== null) {
@@ -98,11 +109,22 @@ router
     }
   });
 
+//crio reclama aqui
+router.route("/reclamaaqui").post(async (req, res) => {
+  await crioReclamaAqui(req, res);
+});
+
+//crio feedback
+router.route("/feedback").post(async (req, res) => {
+  await crioFeedback(req, res);
+});
+
+//login
 router.get("/logout", checkNotAuthenticated, (req, res) => {
   req.session.destroy(() => {
     res.redirect("/login");
   });
 });
 
-//EXPORTING Router MODULE
+//EXPORTANDO Router MODULE
 module.exports = router;

@@ -48,9 +48,8 @@ function checkAuthenticated(req, res, next) {
 }
 
 function checkNotAuthenticated(req, res, next) {
-    console.log(req.session.passport)
     if (!req.session.passport) {
-        return res.redirect('/')
+        return res.redirect('/login')
     }
     next()
 }

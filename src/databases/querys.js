@@ -1,5 +1,5 @@
 const bcrypt = require("bcrypt");
-const { User, Cadapio } = require("./schema");
+const { User, Cadapio, Reclama, Feedback } = require("./schema");
 const fs = require("fs");
 const { reject } = require("bcrypt/promises");
 
@@ -53,68 +53,12 @@ async function criaNovoUsario(reqBody) {
   }
 }
 
-async function updateProfile(req, next) {
-  const id = req.user._id;
-
-  const findUserIfexist = await findUserByIde(id);
-
-  if (findUserIfexist !== null) {
-    let Update;
-
-    const { name, username, email } = req.body;
-    const file = req.file;
-
-    if (file) {
-      const img = fs.readFileSync(file.path);
-      const imgBase64 = img.toString("base64");
-
-      const Photo = await User.findByIdAndUpdate(
-        { _id: id },
-        {
-          profilePhoto: {
-            imageType: file.mimetype,
-            imageBase: imgBase64,
-          },
-        },
-        (err, doc) => {
-          if (err) {
-            return err;
-          }
-          if (doc) {
-            return doc;
-          }
-        }
-      );
-    }
-
-    const ifNeedToUpdate =
-      name !== req.user.name ||
-      username !== req.user.username ||
-      email !== req.user.email;
-
-    if (ifNeedToUpdate) {
-      const toUpdate = {};
-
-      name && (toUpdate.name = name);
-      username && (toUpdate.username = username);
-      email && (toUpdate.email = email);
-
-      await User.findByIdAndUpdate({ _id: id }, toUpdate, (err, duc) => {
-        if (err) {
-          console.log(err);
-        }
-      });
-    }
-    return next(Update);
-  }
-}
-
 async function postCadapio(req, next) {
   const id = req.session.passport.user.id;
 
   const findUserIfexist = await findUserByIde(id);
-  const cadapJa =req.body.data;
-  const cadapioJaexiste = await Cadapio.findOne({data:cadapJa});
+  const cadapJa = req.body.data;
+  const cadapioJaexiste = await Cadapio.findOne({ data: cadapJa });
   if (!findUserIfexist) {
     return console.log("user not find");
   }
@@ -169,15 +113,20 @@ async function postCadapio(req, next) {
 
   await novoCadapio.save((err, doc) => {
     if (err) {
-      console.log(err)
+      console.log(err);
       return err;
     }
     return next(doc);
   });
 }
 
-async function findAllCadapios(next) {
-  const rs = await Cadapio.find((e,d)=>d).clone();
+async function todosOsReclameAqui(next) {
+  const rs = await Reclama.find((e, d) => d).clone();
+  return next(rs);
+}
+
+async function todosOscardpio(next) {
+  const rs = await Cadapio.find((e, d) => d).clone();
   return next(rs);
 }
 
@@ -186,13 +135,53 @@ async function findCadapioByIde(_id, next) {
   return next(cadapio);
 }
 
+async function crioReclamaAqui(req, res) {
+  const { nome, email, curso, setor, msg } = req.body;
+  const newReclamaAqui = new Reclama({
+    nome: nome,
+    email: email,
+    curso: curso,
+    setor: setor,
+    msg: msg,
+  });
+
+  try {
+    await newReclamaAqui.save().then((e) => {
+      return res.status(200).json({ msy: "ok" });
+    });
+  } catch (err) {
+    return res.status(404).json({ msy: "ok" });
+  }
+}
+
+async function crioFeedback(req, res) {
+  const { nome, email, msg } = req.body;
+  const newFeedback = new Feedback({
+    nome: nome,
+    email: email,
+
+    msg: msg,
+  });
+
+  try {
+    await newFeedback.save().then((e) => {
+      return res.status(200).json({ msy: "ok" });
+    });
+  } catch (err) {
+    console.log(err)
+    return res.status(404).json({ msy: "ok" });
+  }
+}
+
 module.exports = {
-  updateProfile,
   findUser,
   findUserByIde,
   validateUser,
   criaNovoUsario,
   postCadapio,
-  findAllCadapios,
+  todosOsReclameAqui,
+  todosOscardpio,
   findCadapioByIde,
+  crioReclamaAqui,
+  crioFeedback,
 };

@@ -1,0 +1,36 @@
+<!-- product cards -->
+<section id="product-cards">
+  <div class="cards-container">
+    <% if(reclames.length !== 0) {-%> <% reclames.forEach((reclame, i)=>{ -%>
+    <div class="cards-item">
+      <div class="reclame"><h2>Reclamação: <%- i+1 %></h2></div>
+      <div class="cards-details">
+        <div class="product-name">
+          <h3>Nome:</h3>
+          <span class=""><%=reclame.nome%></span>
+        </div>
+        <div class="product-name">
+          <h3>Email:</h3>
+          <span class=""><%=reclame.email%></span>
+        </div>
+        <div class="product-name">
+          <h3>Curso:</h3>
+          <span class=""> <%=reclame.curso%></span>
+        </div>
+        <div class="product-name">
+          <h3>Local:</h3>
+          <span class=""><%=reclame.setor%></span>
+        </div>
+      </div>
+      <div class="product-description">
+        <h3>Mensagem:</h3>
+        <div>
+          <span><%=reclame.msg.substr(0, 30)%> ...</span>
+        </div>
+      </div>
+    </div>
+    <% })}else{-%>
+    <h1>No product to display</h1>
+    <%}-%>
+  </div>
+</section>

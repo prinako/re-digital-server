@@ -5,7 +5,8 @@
 }
 
 .cards-container {
-  display: grid;
+  display: flex;
+  flex: wrap;
   border: #000;
 }
 
@@ -22,7 +23,7 @@
     border-bottom: 0.01rem solid ;
     margin-bottom: 0.5rem;
 }
-.reclame h2{
+.reclame h3{
     text-align: center;
 }
 .product-name {
@@ -44,6 +45,10 @@
     background-color: aliceblue;
 }
 
+.price {
+  border-bottom: 1px solid #ececec;
+  margin: 0.5rem 0 0.5rem 0;
+}
 
 .product-btn-links {
   display: flex;
@@ -53,15 +58,12 @@
   margin-top: 0.5rem;
   width: calc(100% - 1rem);
 }
-.product-btn-links a{
-    margin-left: 0.5rem;
-  }
+
 
 
 @media screen and (max-width: 850px) {
   /* product cards */
   .cards-container {
-    grid-template-columns: auto;
     align-items: center;
     width: 100%;
     margin: 2.5rem 0 2rem 0;
@@ -81,14 +83,13 @@
   }
 
   .cards-details {
-    width: 60%;
+    width: 100%;
     padding: 0.5rem 0.7rem;
   }
 
 
   @media screen and (min-width: 520px) {
     .cards-container {
-      grid-template-columns: 1fr 1fr;
       grid-gap: 1rem;
       padding: 1rem;
     }
@@ -106,7 +107,6 @@
 
   @media screen and (min-width: 700px) {
     .cards-container {
-      grid-template-columns: repeat(3, minmax(180.2px, 244.4px));
     }
   }
 }
@@ -114,8 +114,6 @@
 @media screen and (min-width: 851px) {
   /* product cards */
   .cards-container {
-    grid-template-columns: repeat(5, minmax(200.2px, 244.4px));
-    grid-gap: 1rem;
     padding: 2.5rem 2rem 0.5rem 2rem;
   }
 
@@ -134,7 +132,6 @@
 
   @media screen and (max-width: 1170px) {
     .cards-container {
-      grid-template-columns: auto auto auto auto;
     }
   }
 }
