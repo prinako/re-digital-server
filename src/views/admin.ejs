@@ -1,23 +1,15 @@
 <%- include('./partials/header'); -%>
 
-    
 <link rel="stylesheet" href="css/sell.css" />
 <section class="container-sell">
-    <% try { %>
-
-        <% if (inform !== '') { %>
-        <div class="infor"><p><%= inform %></p> </div>
-        <% } %>
-        <% }catch (e) {} %>
+  <% try { %> <% if (inform !== '') { %>
+  <div class="infor"><p><%= inform %></p></div>
+  <% } %> <% }catch (e) {} %>
   <div class="title">
     <h1>Novo Cardápio</h1>
   </div>
-  <form
-    class="form-wrapper"
-    action="/admin"
-    method="post"
-  >
-  <!-- AQUI FICAR A SELEÇÃO DA DATA -->
+  <form class="form-wrapper" action="/admin" method="post">
+    <!-- AQUI FICAR A SELEÇÃO DA DATA -->
     <div class="wt-h mg-b product">
       <label class="form-label" for="data"><span>Data:</span></label>
       <input
@@ -40,9 +32,7 @@
       </div>
     </div>
     <div class="wt-h mg-b product">
-      <label class="form-label" for="title"
-        ><span>Prato:</span></label
-      >
+      <label class="form-label" for="title"><span>Prato:</span></label>
       <input
         class="form-control wt-h"
         id="title"
@@ -106,6 +96,17 @@
         autocomplete="off"
       />
     </div>
+    <h2 class="mg-t">Vegetariano:</h2>
+    <div class="wt-h mg-b product">
+      <input
+        class="form-control wt-h"
+        id="amo"
+        name="vegetarino1"
+        type="text"
+        placeholder="ex: salada"
+        autocomplete="off"
+      />
+    </div>
 
     <hr
       style="height: 0.25rem; background-color: #000; margin: 1rem 0 1rem 0"
@@ -134,60 +135,70 @@
         autocomplete="off"
       />
     </div>
-</div>
-<h2 class="mg-t">Guarnição:</h2>
-<div class="wt-h mg-b product">
-  <input
-    class="form-control wt-h"
-    id="amo"
-    name="jan1"
-    type="text"
-    placeholder="ex: arroz"
-    required
-    autocomplete="off"
-  />
-</div>
-<div class="wt-h mg-b product">
-  <input
-    class="form-control wt-h"
-    id="amo"
-    name="jan2"
-    type="text"
-    placeholder="ex: arroz"
-    required
-    autocomplete="off"
-  />
-</div>
-<div class="wt-h mg-b product">
-  <input
-    class="form-control wt-h"
-    id="amo"
-    name="jan3"
-    type="text"
-    placeholder="ex: banana"
-    autocomplete="off"
-  />
-</div>
-<div class="wt-h mg-b product">
-  <input
-    class="form-control wt-h"
-    id="amo"
-    name="jan4"
-    type="text"
-    placeholder="ex: feijão"
-    autocomplete="off"
-  />
-</div>
-<div class="wt-h mg-b product">
-  <input
-    class="form-control wt-h"
-    id="amo"
-    name="jan5"
-    type="text"
-    placeholder="ex: salada"
-    autocomplete="off"
-  />
-</div>
+    <h2 class="mg-t">Guarnição:</h2>
+    <div class="wt-h mg-b product">
+      <input
+        class="form-control wt-h"
+        id="amo"
+        name="jan1"
+        type="text"
+        placeholder="ex: arroz"
+        required
+        autocomplete="off"
+      />
+    </div>
+    <div class="wt-h mg-b product">
+      <input
+        class="form-control wt-h"
+        id="amo"
+        name="jan2"
+        type="text"
+        placeholder="ex: arroz"
+        required
+        autocomplete="off"
+      />
+    </div>
+    <div class="wt-h mg-b product">
+      <input
+        class="form-control wt-h"
+        id="amo"
+        name="jan3"
+        type="text"
+        placeholder="ex: banana"
+        autocomplete="off"
+      />
+    </div>
+    <div class="wt-h mg-b product">
+      <input
+        class="form-control wt-h"
+        id="amo"
+        name="jan4"
+        type="text"
+        placeholder="ex: feijão"
+        autocomplete="off"
+      />
+    </div>
+    <div class="wt-h mg-b product">
+      <input
+        class="form-control wt-h"
+        id="amo"
+        name="jan5"
+        type="text"
+        placeholder="ex: salada"
+        autocomplete="off"
+      />
+    </div>
+    <h2 class="mg-t">Vegetariano:</h2>
+    <div class="wt-h mg-b product">
+      <input
+        class="form-control wt-h"
+        id="amo"
+        name="vegetarino1"
+        type="text"
+        placeholder="ex: salada"
+        autocomplete="off"
+      />
+    </div>
     <div class="wt-h mg-b product">
       <button class="btn wt-h" type="submit">Enviar</button>
     </div>

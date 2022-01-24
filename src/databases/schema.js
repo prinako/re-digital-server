@@ -109,6 +109,9 @@ const cadapioSchema = new Schema(
           type: String,
         },
       },
+      vegetariano: {
+        type: String,
+      },
     },
     jantar: {
       refeicao: {
@@ -136,6 +139,9 @@ const cadapioSchema = new Schema(
         jan5: {
           type: String,
         },
+      },
+      vegetariano: {
+        type: String,
       },
     },
     admin: {

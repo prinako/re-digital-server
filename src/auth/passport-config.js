@@ -27,7 +27,6 @@ function initPassport(passport) {
     }, authenticateUser));
 
     passport.serializeUser((user, done) => {
-        console.log(user)
         process.nextTick(function() {
             done(null, { id: user._id, username: user.username});
           });
@@ -42,7 +41,7 @@ function initPassport(passport) {
 
 function checkAuthenticated(req, res, next) {
     if (req.session.passport) {
-        res.redirect('/admin')
+        res.redirect('/')
     }
     return next()
 }
