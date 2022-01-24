@@ -62,7 +62,7 @@ router
 
 router.get("/api", async (req, res) => {
   const resolut = await todosOscardpio((doc) => doc);
-  res.send(JSON.stringify(resolut));
+  res.json(resolut);
 });
 
 router
