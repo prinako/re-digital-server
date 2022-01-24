@@ -60,7 +60,7 @@ async function postCadapio(req, next) {
   const cadapJa = req.body.data;
   const cadapioJaexiste = await Cadapio.findOne({ data: cadapJa });
   if (!findUserIfexist) {
-    return console.log("user not find");
+    return;
   }
   if (cadapioJaexiste) {
     return reject("Verifique a Data do Cadapio já existe ");
@@ -113,7 +113,6 @@ async function postCadapio(req, next) {
 
   await novoCadapio.save((err, doc) => {
     if (err) {
-      console.log(err);
       return err;
     }
     return next(doc);
@@ -168,7 +167,6 @@ async function crioFeedback(req, res) {
       return res.status(200).json({ msy: "ok" });
     });
   } catch (err) {
-    console.log(err)
     return res.status(404).json({ msy: "ok" });
   }
 }

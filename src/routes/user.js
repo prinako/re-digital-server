@@ -23,7 +23,6 @@ router.use(express.static("usersProfileImage"));
 //RENDING LOG IN PAGE
 router.route("/").get(checkNotAuthenticated, async (req, res) => {
   await todosOsReclameAqui((reclamaçoes)=>{
-    console.log(reclamaçoes)
     res.render("index", {
       title: "Ru Digital",
       userId: req.session.passport.user,
@@ -34,7 +33,6 @@ router.route("/").get(checkNotAuthenticated, async (req, res) => {
 
 router.route("/cardapio").get(checkNotAuthenticated, async (req, res) => {
   await todosOscardpio((cardapio)=>{
-    console.log(cardapio[0].amoco.nomeDaRefei)
     res.render("cardapio", {
       title: "Ru Digital",
       userId: req.session.passport.user,
@@ -101,7 +99,6 @@ router
       await criaNovoUsario(req.body);
       res.redirect("login");
     } catch (err) {
-      console.log(err);
       res.render("register", {
         inform: err,
         title: "Crio conta",
