@@ -16,15 +16,21 @@ html {
 
 .infor{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 1rem;
+    color: #FF5C58;
+    
+}
+.infor h3{
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
 
 }
 .infor p{
-    font-size: 2rem;
     font-weight: 800;
-    color: #FF5C58;
+    font-size: 1.5rem;
 }
 
 a {
@@ -54,6 +60,10 @@ ul {
 
 button:focus:not(:focus-visible) {
     outline: 0;
+}
+.user{
+    margin-right: .5rem;
+    color: var(--secondary-color);
 }
 
 .color-navbar {

@@ -1,7 +1,11 @@
 .container-sell {
     width: 100%;
     background-color:#fff;
-    padding-top:2rem;
+    padding-top:.5rem;
+}
+
+.bkg{
+    background-color:#fff;
 }
 
 .title {

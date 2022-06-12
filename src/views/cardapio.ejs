@@ -1,6 +1,10 @@
 <link rel="stylesheet" href="css/index.css" />
+<link rel="stylesheet" href="css/cardapio.css" />
 <%-include("./partials/header")-%>
 <div class="product-btn-links">
+  <% if (cardapios.length !== 0) { %>
+    <a class="btn btn_delete" href="/drop">Excluir todos os cardápios</a>
+    <% } %>
     <a class="btn" href="/">Pagina Inicial</a>
     <a class="btn" href="/admin">Adicione Novo Cardápio</a>
   </div>
@@ -11,6 +15,7 @@
     <div class="cards-item">
       <div class="reclame">
         <h3>Cardapio de: <%=cardapio.data %></h3>
+        <h3></h3>
       </div>
       <div class="cards-details">
         <div class="product-name">
@@ -63,6 +68,9 @@
         <div class="product-name">
           <h3>Vegetariano:</h3>
           <span class=""><%=cardapio.jantar.vegetariano2 %></span>
+        </div>
+        <div class="wrapper_editar">
+          <a class="btn btn_editar" href="/editar/<%=cardapio._id %>">Editar</a>
         </div>
       </div>
     </div>

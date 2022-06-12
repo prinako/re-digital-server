@@ -30,7 +30,7 @@ async function validateUser(email, username) {
 async function criaNovoUsario(reqBody) {
   const encryptedPassword = await bcrypt.hash(reqBody.password, 10);
   const admin = reqBody.codigo;
-  const codigoServidor = process.env.CODIGO;
+  const codigoServidor = process.env.CODIGO_ADMIN;
 
   const adminCodigo = codigoServidor === admin;
 
@@ -63,7 +63,10 @@ async function postCadapio(req, next) {
     return;
   }
   if (cadapioJaexiste) {
-    return reject("Verifique a Data do Cadapio já existe ");
+    return reject({
+      err1: "Verifique !!...",
+      err2: "A data do cardapio já existe.",
+    });
   }
 
   const {
@@ -133,9 +136,72 @@ async function todosOscardpio(next) {
   return next(rs);
 }
 
-async function findCadapioByIde(_id, next) {
+async function findCardapioByIde(_id, next) {
   const cadapio = await Cadapio.findById({ _id });
   return next(cadapio);
+}
+
+async function updateCardapio(req, next) {
+  const id = req.params.id;
+
+  const findCardapiofexist = await findCardapioByIde(id, (e) => e);
+
+  if (findCardapiofexist !== null) {
+    const {
+      data,
+      refeicao1,
+      nomeDaRefeiAmo,
+      amo1,
+      amo2,
+      amo3,
+      amo4,
+      amo5,
+      refeicao2,
+      vegetariano1,
+      nomeDaRefeiJan,
+      jan1,
+      jan2,
+      jan3,
+      jan4,
+      jan5,
+      vegetariano2,
+    } = req.body;
+
+    const toUpdate = {
+      data: data,
+      amoco: {
+        refeicao: refeicao1,
+        nomeDaRefei: nomeDaRefeiAmo,
+        ingredintes: {
+          amo1: amo1,
+          amo2: amo2,
+          amo3: amo3,
+          amo4: amo4,
+          amo5: amo5,
+        },
+        vegetariano1: vegetariano1,
+      },
+      jantar: {
+        refeicao: refeicao2,
+        nomeDaRefei: nomeDaRefeiJan,
+        ingredintes: {
+          jan1: jan1,
+          jan2: jan2,
+          jan3: jan3,
+          jan4: jan4,
+          jan5: jan5,
+        },
+        vegetariano2: vegetariano2,
+      },
+    };
+
+    await Cadapio.findByIdAndUpdate({ _id: id }, toUpdate, (err, duc) => {
+      if (err) {
+        console.log(err);
+      }
+    }).clone();
+  }
+  return next();
 }
 
 async function crioReclamaAqui(req, res) {
@@ -155,6 +221,12 @@ async function crioReclamaAqui(req, res) {
   } catch (err) {
     return res.status(404).json({ msy: "ok" });
   }
+}
+
+async function dropCollection(next) {
+  Cadapio.collection.drop()
+    .then(() => next())
+    .catch((err) => console.error(err));
 }
 
 async function crioFeedback(req, res) {
@@ -183,7 +255,9 @@ module.exports = {
   postCadapio,
   todosOsReclameAqui,
   todosOscardpio,
-  findCadapioByIde,
+  findCardapioByIde,
   crioReclamaAqui,
   crioFeedback,
+  updateCardapio,
+  dropCollection,
 };

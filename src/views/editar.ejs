@@ -1,24 +1,14 @@
-<link rel="stylesheet" href="css/index.css" />
-<link rel="stylesheet" href="css/sell.css" />
-
 <%- include('./partials/header'); -%>
 
+<link rel="stylesheet" href="css/sell.css" />
 <section class="container-sell">
-<div class="product-btn-links">
-  <a class="btn" href="/">Pagina Inicial</a>
-  <a class="btn" href="/cardapio">Todos os Cardapios</a>
-</div>
-
   <% try { %> <% if (inform !== '') { %>
-  <div class="infor">
-    <h3><%= inform.err1 %></h3>
-    <p><%= inform.err2 %></p>
-  </div>
+  <div class="infor"><p><%= inform %></p></div>
   <% } %> <% }catch (e) {} %>
   <div class="title">
-    <h1>Novo Cardápio</h1>
+    <h1>Edite o cardápio</h1>
   </div>
-  <form class="form-wrapper" action="/admin" method="post">
+  <form class="form-wrapper" action="/editar/<%= cardapio._id %>" method="post">
     <!-- AQUI FICAR A SELEÇÃO DA DATA -->
     <div class="wt-h mg-b product">
       <label class="form-label" for="data"><span>Data:</span></label>
@@ -29,6 +19,7 @@
         type="date"
         required
         autocomplete="off"
+        value="<%= cardapio.data %>"
       />
     </div>
     <!-- AQUI FICAR A SELEÇAÕ DO REFEIÇAÕ (AMOÇO)-->
@@ -50,6 +41,7 @@
         type="text"
         required
         autocomplete="off"
+        value="<%= cardapio.amoco.nomeDaRefei %>"
       />
     </div>
     <!-- GUARNIÇÃO -->
@@ -63,6 +55,7 @@
         placeholder="ex: arroz"
         required
         autocomplete="off"
+        value="<%= cardapio.amoco.ingredintes.amo1 %>"
       />
     </div>
     <div class="wt-h mg-b product">
@@ -74,6 +67,7 @@
         placeholder="ex: arroz"
         required
         autocomplete="off"
+        value="<%= cardapio.amoco.ingredintes.amo2 %>"
       />
     </div>
     <div class="wt-h mg-b product">
@@ -84,6 +78,7 @@
         type="text"
         placeholder="ex: banana"
         autocomplete="off"
+        value="<%= cardapio.amoco.ingredintes.amo3 %>"
       />
     </div>
     <div class="wt-h mg-b product">
@@ -94,6 +89,7 @@
         type="text"
         placeholder="ex: feijão"
         autocomplete="off"
+        value="<%= cardapio.amoco.ingredintes.amo4 %>"
       />
     </div>
     <div class="wt-h mg-b product">
@@ -104,6 +100,7 @@
         type="text"
         placeholder="ex: salada"
         autocomplete="off"
+        value="<%= cardapio.amoco.ingredintes.amo5 %>"
       />
     </div>
     <h2 class="mg-t">Vegetariano:</h2>
@@ -115,6 +112,7 @@
         type="text"
         placeholder="ex: salada"
         autocomplete="off"
+        value="<%= cardapio.amoco.vegetariano1 %>"
       />
     </div>
 
@@ -143,6 +141,7 @@
         type="text"
         required
         autocomplete="off"
+        value="<%= cardapio.jantar.nomeDaRefei %>"
       />
     </div>
     <h2 class="mg-t">Guarnição:</h2>
@@ -155,6 +154,7 @@
         placeholder="ex: arroz"
         required
         autocomplete="off"
+        value="<%= cardapio.jantar.ingredintes.jan1 %>"
       />
     </div>
     <div class="wt-h mg-b product">
@@ -166,6 +166,7 @@
         placeholder="ex: arroz"
         required
         autocomplete="off"
+        value="<%= cardapio.jantar.ingredintes.jan2 %>"
       />
     </div>
     <div class="wt-h mg-b product">
@@ -176,6 +177,7 @@
         type="text"
         placeholder="ex: banana"
         autocomplete="off"
+        value="<%= cardapio.jantar.ingredintes.jan3 %>"
       />
     </div>
     <div class="wt-h mg-b product">
@@ -186,6 +188,7 @@
         type="text"
         placeholder="ex: feijão"
         autocomplete="off"
+        value="<%= cardapio.jantar.ingredintes.jan5 %>"
       />
     </div>
     <div class="wt-h mg-b product">
@@ -196,6 +199,7 @@
         type="text"
         placeholder="ex: salada"
         autocomplete="off"
+        value="<%= cardapio.jantar.ingredintes.jan5 %>"
       />
     </div>
     <h2 class="mg-t">Vegetariano:</h2>
@@ -207,10 +211,11 @@
         type="text"
         placeholder="ex: salada"
         autocomplete="off"
+        value="<%= cardapio.jantar.vegetariano2 %>"
       />
     </div>
     <div class="wt-h mg-b product">
-      <button class="btn wt-h" type="submit">Enviar</button>
+      <button class="btn wt-h" type="submit">Atualizar</button>
     </div>
   </form>
 </section>

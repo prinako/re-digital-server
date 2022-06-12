@@ -10,6 +10,8 @@ const {
   todosOscardpio,
   crioFeedback,
   crioReclamaAqui,
+  findCardapioByIde,
+  dropCollection,
 } = require("../databases/querys");
 
 const {
@@ -22,25 +24,27 @@ router.use(express.static("usersProfileImage"));
 
 //RENDING LOG IN PAGE
 router.route("/").get(checkNotAuthenticated, async (req, res) => {
-  await todosOsReclameAqui((reclamaçoes)=>{
+  await todosOsReclameAqui((reclamaçoes) => {
     res.render("index", {
       title: "Ru Digital",
       userId: req.session.passport.user,
-      reclames:reclamaçoes
+      reclames: reclamaçoes,
     });
-  })
+  });
 });
 
-router.route("/cardapio").get(checkNotAuthenticated, async (req, res) => {
-  await todosOscardpio((cardapio)=>{
-    res.render("cardapio", {
-      title: "Ru Digital",
-      userId: req.session.passport.user,
-      cardapios:cardapio
+router
+  .route("/cardapio")
+  .get(checkNotAuthenticated, async (req, res) => {
+    await todosOscardpio((cardapio) => {
+      res.render("cardapio", {
+        title: "Ru Digital",
+        userId: req.session.passport.user,
+        cardapios: cardapio,
+      });
     });
-  })
-});
-
+  });
+  
 router
   .route("/admin")
   .get(checkNotAuthenticated, (req, res) => {
@@ -58,6 +62,15 @@ router
         userId: req.session.passport.user,
       });
     }
+  });
+
+router
+  .route("/drop")
+  .get(checkNotAuthenticated, async (req, res) => {
+     await dropCollection((cd)=>{
+      console.log(cd);
+        res.redirect("/cardapio");
+      });
   });
 
 router.get("/api", async (req, res) => {

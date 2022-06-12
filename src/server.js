@@ -62,8 +62,10 @@ app.use(
 app.use(passport.initialize());
 
 const userRouter = require("./routes/user");
+const editarRouter = require("./routes/editar");
 
 app.use("/", userRouter);
+app.use("/editar", editarRouter);
 
 app.listen(port, () => {
   console.log(`server started on port ${port}`);
