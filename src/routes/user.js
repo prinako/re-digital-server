@@ -68,7 +68,6 @@ router
   .route("/drop")
   .get(checkNotAuthenticated, async (req, res) => {
      await dropCollection((cd)=>{
-      if (cd)
         res.redirect("/cardapio");
       });
   });
